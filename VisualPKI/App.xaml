@@ -1,8 +1,9 @@
 ﻿<Application x:Class="VisualPKI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             xmlns:locale ="clr-namespace:VisualPKI.Resources.Lang"
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+         <locale:LocalizedStrings x:Key="LocalizedStrings"/>
     </Application.Resources>
 </Application>

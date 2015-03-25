@@ -1,6 +1,6 @@
 ﻿namespace VisualPKI.Resources.Lang
 {
-    class LocalizedStrings
+    public class LocalizedStrings
     {
         public LocalizedStrings()
         {
