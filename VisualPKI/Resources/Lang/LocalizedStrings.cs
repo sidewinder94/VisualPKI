@@ -7,7 +7,14 @@
         }
 
         private static readonly Strings LocaleInstance = new Strings();
-        public Strings Locale { get { return LocaleInstance; } }
+
+        public Strings Locale
+        {
+            get
+            {
+                return LocaleInstance;
+            }
+        }
 
     }
 }

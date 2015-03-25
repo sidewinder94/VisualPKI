@@ -59,5 +59,41 @@ namespace VisualPKI.Resources.Lang {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à VisualPKI.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Create en Intermediate Certificate.
+        /// </summary>
+        public static string CreateIntermediateCertificate {
+            get {
+                return ResourceManager.GetString("CreateIntermediateCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Create a Self-Signed Certificate.
+        /// </summary>
+        public static string CreateSelfSignedCertificate {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sign a Certificate Request.
+        /// </summary>
+        public static string SignCertificateRequest {
+            get {
+                return ResourceManager.GetString("SignCertificateRequest", resourceCulture);
+            }
+        }
     }
 }
