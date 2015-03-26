@@ -7,8 +7,8 @@
         Title="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateSelfSignedCertificate}"
         mc:Ignorable="d" 
         x:Class="VisualPKI.Views.SelfSignedCertificateWindow" 
-        Height="541.333"
-        Width="332.667">
+        Height="475"
+        Width="333">
     <Window.Resources>
         <Style TargetType="{x:Type GroupBox}" x:Key="GroupStyle">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -57,8 +57,8 @@
         <!--Controls-->
         <DatePicker Grid.Column="1" Grid.Row="0" SelectedDate="{Binding StartDate}" Style="{StaticResource DateStyle}" x:Name="StartDatePicker"/>
         <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate}" Style="{StaticResource DateStyle}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SerialNumber}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Center" TextAlignment="Right" IsEnabled="False" Width="{Binding ActualWidth, ElementName=StartDatePicker, Mode=OneWay}"/>
-        <Grid Grid.Column="1" Grid.Row="3" Width="{Binding ActualWidth, ElementName=StartDatePicker, Mode=OneWay}" VerticalAlignment="Center">
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SerialNumber}" Style="{StaticResource TextBoxStyle}" TextAlignment="Right" IsEnabled="False"/>
+        <Grid Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
@@ -80,6 +80,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+
                 </Grid.RowDefinitions>
                 <!--Labels-->
                 <Label Grid.Row="0" Grid.Column="0" Content="{Binding Locale.DomainName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
@@ -100,9 +101,9 @@
                 <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding MailAddress}"/>
                 <!--Controls-->
             </Grid>
-            
+
         </GroupBox>
-        
+
         <Button Grid.Row="5" Grid.Column="1"  Style="{StaticResource ButtonStyle}" Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.Create}" Click="CreateButton_Click"/>
         <!--Controls-->
     </Grid>

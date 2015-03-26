@@ -156,7 +156,7 @@
     <value>Sélectionnez la clé Privée</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Nom de Domaine</value>
+    <value>Nom (Domaine ou Complet)</value>
   </data>
   <data name="Organization" xml:space="preserve">
     <value>Organisation</value>

@@ -159,7 +159,7 @@
     <value>Please Select Private Key</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Domain Name</value>
+    <value>Name (Domain or Fullname)</value>
   </data>
   <data name="Organization" xml:space="preserve">
     <value>Organization</value>

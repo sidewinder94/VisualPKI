@@ -82,9 +82,7 @@ namespace VisualPKI.Views
             _startDate = DateTime.Now;
             _endDate = DateTime.Now.AddDays(1);
             CSRData = new SigningRequestData();
-            this.SerialNumber = Settings.Default.LastGeneratedSerial;
-            Settings.Default.LastGeneratedSerial += 1;
-            Settings.Default.Save();
+            SerialNumber = Settings.Default.LastGeneratedSerial;
 
             InitializeComponent();
             DataContext = this;

@@ -115,7 +115,7 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Domain Name.
+        ///   Recherche une chaîne localisée semblable à Name (Domain or Fullname).
         /// </summary>
         public static string DomainName {
             get {
