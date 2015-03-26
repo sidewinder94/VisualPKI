@@ -4,7 +4,10 @@ using System.IO;
 using System.Windows.Controls;
 using Org.BouncyCastle.Asn1.Ocsp;
 using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.Math;
+using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
 using VisualPKI.DataStructures;
 using Utils.Text;
@@ -42,9 +45,14 @@ namespace VisualPKI.Generation
             return new Tuple<AsymmetricCipherKeyPair, X509Certificate>(keyPair, cert);
         }
 
-        public static void WriteCertificate(String path, String password = null)
+        public static void WriteCertificate(X509Certificate cert, String path, String password = null)
         {
-            //TODO: Serialize Certificate on Disk
+            using (var writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
+                )
+            {
+                var pemWriter = new PemWriter(writer);
+                pemWriter.WriteObject(cert);
+            }
         }
     }
 }

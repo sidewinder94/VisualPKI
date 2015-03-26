@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using Microsoft.Win32;
+using Utils.Misc;
 using Utils.WPF;
 using VisualPKI.DataStructures;
 using VisualPKI.Generation;
@@ -97,7 +98,8 @@ namespace VisualPKI.Views
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath);
+            var couple = SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath);
+            //TODO : Ajouter des listes déroulantes pour proposer les différents algorithmes de clés/signatures/etc...
         }
 
 
