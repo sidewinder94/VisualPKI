@@ -1,27 +1,120 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using Microsoft.Win32;
+using Utils.WPF;
+using VisualPKI.DataStructures;
+using VisualPKI.Generation;
+using VisualPKI.Properties;
+using VisualPKI.Resources.Lang;
 
 namespace VisualPKI.Views
 {
     /// <summary>
     /// Logique d'interaction pour SelfSignedCertificateWindow.xaml
     /// </summary>
-    public partial class SelfSignedCertificateWindow : Window
+    public partial class SelfSignedCertificateWindow : Window, INotifyPropertyChanged
     {
+        private DateTime _endDate;
+        private DateTime _startDate;
+        private String _privateKeyPath;
+
+        public DateTime EndDate
+        {
+            get { return _endDate; }
+            set
+            {
+                if (value < StartDate)
+                {
+                    MessageBox.Show(Strings.IncorrectEndDate,
+                                    Strings.InputError,
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    _endDate = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public SigningRequestData CSRData { get; private set; }
+
+        public DateTime StartDate
+        {
+            get { return _startDate; }
+            set
+            {
+                if (value > EndDate)
+                {
+                    MessageBox.Show(Strings.IncorrectStartDate,
+                                    Strings.InputError,
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    _startDate = value;
+                    OnPropertyChanged();
+                }
+
+            }
+        }
+
+        public int SerialNumber { get; private set; }
+
+        public String PrivateKeyPath
+        {
+            get { return _privateKeyPath; }
+            set
+            {
+                _privateKeyPath = value;
+                OnPropertyChanged();
+            }
+        }
+
         public SelfSignedCertificateWindow()
         {
+            _startDate = DateTime.Now;
+            _endDate = DateTime.Now.AddDays(1);
+            CSRData = new SigningRequestData();
+            this.SerialNumber = Settings.Default.LastGeneratedSerial;
+            Settings.Default.LastGeneratedSerial += 1;
+            Settings.Default.Save();
+
             InitializeComponent();
+            DataContext = this;
         }
+
+        private void BrowseKeyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = FilePicker.GetOpenFileDialog(Strings.OFileDialogPK);
+            ofd.ShowDialog(this);
+            this.PrivateKeyPath = ofd.FileName;
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath);
+        }
+
+
+
+
+        #region Implementation of INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
     }
 }

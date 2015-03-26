@@ -20,8 +20,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="1" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateSelfSignedCertificate}"/>
-        <Button Grid.Row="2" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateIntermediateCertificate}"/>
-        <Button Grid.Row="3" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.SignCertificateRequest}"/>
+        <Button Grid.Row="1" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateSelfSignedCertificate}" x:Name="SelfSignButton" Click="SelfSignButton_Click"/>
+        <Button Grid.Row="2" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateIntermediateCertificate}" x:Name="IntermediateCertificateButton"/>
+        <Button Grid.Row="3" Style="{StaticResource ButtonStyle}"  Content="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.SignCertificateRequest}" x:Name="SignCertificateRequestButton"/>
     </Grid>
 </Window>

@@ -128,4 +128,58 @@
   <data name="AppName" xml:space="preserve">
     <value>VisualPKI</value>
   </data>
+  <data name="Optionnal" xml:space="preserve">
+    <value>Optionnal</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Private Key (if existing)</value>
+  </data>
+  <data name="IncorrectEndDate" xml:space="preserve">
+    <value>Expiration Date is set before Starting Date !</value>
+  </data>
+  <data name="InputError" xml:space="preserve">
+    <value>Input Error</value>
+  </data>
+  <data name="IncorrectStartDate" xml:space="preserve">
+    <value>Starting Date is set after Expiration Date !</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="OFileDialogPK" xml:space="preserve">
+    <value>Please Select Private Key</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>Domain Name</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OrganisationalUnit" xml:space="preserve">
+    <value>Organisational Unit</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>Town</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State/Region</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>Mail Address</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create !</value>
+  </data>
 </root>

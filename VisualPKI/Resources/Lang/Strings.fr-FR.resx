@@ -125,4 +125,58 @@
   <data name="SignCertificateRequest" xml:space="preserve">
     <value>Signer une demande de certificat</value>
   </data>
+  <data name="Optionnal" xml:space="preserve">
+    <value>Optionnel</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Date de Début</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Date de Fin</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Numéro de Série</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Clé Privée (si existante)</value>
+  </data>
+  <data name="IncorrectEndDate" xml:space="preserve">
+    <value>La date d'expiration est définie avant la date d'entrée en service !</value>
+  </data>
+  <data name="InputError" xml:space="preserve">
+    <value>Erreur de Saisie</value>
+  </data>
+  <data name="IncorrectStartDate" xml:space="preserve">
+    <value>La date de mise en service est définie après la date d'expiration !</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
+  <data name="OFileDialogPK" xml:space="preserve">
+    <value>Sélectionnez la clé Privée</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>Nom de Domaine</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>Organisation</value>
+  </data>
+  <data name="OrganisationalUnit" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="Town" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Etat/Region</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>Adresse Mail</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Créer !</value>
+  </data>
 </root>
