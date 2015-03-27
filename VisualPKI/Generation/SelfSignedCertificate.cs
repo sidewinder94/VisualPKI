@@ -47,8 +47,8 @@ namespace VisualPKI.Generation
 
         public static void WriteCertificate(X509Certificate cert, String path, String password = null)
         {
-            using (var writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
-                )
+            //TODO: Export in PKCS formats
+            using (var writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None)))
             {
                 var pemWriter = new PemWriter(writer);
                 pemWriter.WriteObject(cert);

@@ -115,6 +115,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Digest.
+        /// </summary>
+        public static string Digest {
+            get {
+                return ResourceManager.GetString("Digest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Name (Domain or Fullname).
         /// </summary>
         public static string DomainName {
@@ -129,6 +138,15 @@ namespace VisualPKI.Resources.Lang {
         public static string EndDate {
             get {
                 return ResourceManager.GetString("EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Generation Parameters.
+        /// </summary>
+        public static string GenerationParams {
+            get {
+                return ResourceManager.GetString("GenerationParams", resourceCulture);
             }
         }
         
@@ -160,6 +178,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Key Algorithm.
+        /// </summary>
+        public static string KeyAlgorithm {
+            get {
+                return ResourceManager.GetString("KeyAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Mail Address.
         /// </summary>
         public static string MailAddress {
@@ -174,6 +201,15 @@ namespace VisualPKI.Resources.Lang {
         public static string OFileDialogPK {
             get {
                 return ResourceManager.GetString("OFileDialogPK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
             }
         }
         
@@ -205,6 +241,24 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Password Required.
+        /// </summary>
+        public static string PasswordRequired {
+            get {
+                return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Private Key (if existing).
         /// </summary>
         public static string PrivateKey {
@@ -214,11 +268,29 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save Path.
+        /// </summary>
+        public static string SavePath {
+            get {
+                return ResourceManager.GetString("SavePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Serial Number.
         /// </summary>
         public static string SerialNumber {
             get {
                 return ResourceManager.GetString("SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Signature Algorithm.
+        /// </summary>
+        public static string SignatureAlgorithm {
+            get {
+                return ResourceManager.GetString("SignatureAlgorithm", resourceCulture);
             }
         }
         

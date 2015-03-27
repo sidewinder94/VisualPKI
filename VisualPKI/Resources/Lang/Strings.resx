@@ -182,4 +182,28 @@
   <data name="Create" xml:space="preserve">
     <value>Create !</value>
   </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Password Required</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="GenerationParams" xml:space="preserve">
+    <value>Generation Parameters</value>
+  </data>
+  <data name="KeyAlgorithm" xml:space="preserve">
+    <value>Key Algorithm</value>
+  </data>
+  <data name="SignatureAlgorithm" xml:space="preserve">
+    <value>Signature Algorithm</value>
+  </data>
+  <data name="Digest" xml:space="preserve">
+    <value>Digest</value>
+  </data>
+  <data name="SavePath" xml:space="preserve">
+    <value>Save Path</value>
+  </data>
 </root>

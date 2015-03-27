@@ -84,6 +84,9 @@
     <Compile Include="Views\IntermediateCertificateWindow.xaml.cs">
       <DependentUpon>IntermediateCertificateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PasswordFinder.xaml.cs">
+      <DependentUpon>PasswordFinder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelfSignedCertificateWindow.xaml.cs">
       <DependentUpon>SelfSignedCertificateWindow.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PasswordFinder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SelfSignedCertificateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.IO;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.Pkcs;
@@ -14,25 +15,28 @@ using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using VisualPKI.Views;
 
 namespace VisualPKI.Generation
 {
-    public class PrivateKey
+    public static class PrivateKey
     {
         public static AsymmetricCipherKeyPair GenerateKeyPair()
         {
             var generator = new RsaKeyPairGenerator();
+            generator.Init(new KeyGenerationParameters(new SecureRandom(new CryptoApiRandomGenerator()), 2048));
             return generator.GenerateKeyPair();
         }
 
         public static AsymmetricCipherKeyPair ReadFromFile(FileStream file)
         {
             AsymmetricCipherKeyPair result = null;
+            IPasswordFinder finder = new PasswordFinder();
             try
             {
                 while (result == null)
                 {
-                    IPasswordFinder finder = null;
+
                     try
                     {
                         var reader = new PemReader(new StreamReader(file), finder);
@@ -40,7 +44,7 @@ namespace VisualPKI.Generation
                     }
                     catch (PasswordException)
                     {
-                        //TODO: Create a PasswordFinder for Key
+                        ((PasswordFinder)finder).ShowDialog();
                     }
                 }
             }

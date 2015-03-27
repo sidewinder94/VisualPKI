@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -83,18 +84,13 @@ namespace VisualPKI.Views
             _startDate = DateTime.Now;
             _endDate = DateTime.Now.AddDays(1);
             CSRData = new SigningRequestData();
+            PrivateKeyPath = "ttttttt";
             SerialNumber = Settings.Default.LastGeneratedSerial;
 
             InitializeComponent();
             DataContext = this;
         }
 
-        private void BrowseKeyButton_Click(object sender, RoutedEventArgs e)
-        {
-            var ofd = FilePicker.GetOpenFileDialog(Strings.OFileDialogPK);
-            ofd.ShowDialog(this);
-            this.PrivateKeyPath = ofd.FileName;
-        }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
