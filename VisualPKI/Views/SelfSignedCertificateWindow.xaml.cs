@@ -10,6 +10,7 @@ using Microsoft.Win32;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
 using Utils.Misc;
+using Utils.Text;
 using Utils.WPF;
 using VisualPKI.DataStructures;
 using VisualPKI.Generation;
@@ -118,6 +119,17 @@ namespace VisualPKI.Views
             var signatureAlgorithm = String.Format("{0}with{1}", HashAlgorithm, SignatureAlgorithm);
 
             var couple = SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath, keyParameter, signatureAlgorithm);
+
+            String baseName = SavePath.RegExpReplace(@"\.\w+$", "");
+
+            SelfSignedCertificate.WriteCertificate(couple.Right(), SavePath);
+            var finder = new PasswordFinder(true);
+
+            finder.ShowDialog();
+
+            PrivateKey.WritePrivateKey(couple.Left(), String.Format("{0}.key", baseName), finder.GetPassword());
+
+            Settings.Default.Save();
         }
 
 

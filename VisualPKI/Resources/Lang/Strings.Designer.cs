@@ -205,6 +205,16 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Passswords do not match
+        ///Leave blank to let the key unprotected.
+        /// </summary>
+        public static string NotMatchingPasswords {
+            get {
+                return ResourceManager.GetString("NotMatchingPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Please Select Private Key.
         /// </summary>
         public static string OFileDialogPK {
@@ -264,6 +274,15 @@ namespace VisualPKI.Resources.Lang {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Password Confirmation.
+        /// </summary>
+        public static string PasswordConfirmation {
+            get {
+                return ResourceManager.GetString("PasswordConfirmation", resourceCulture);
             }
         }
         

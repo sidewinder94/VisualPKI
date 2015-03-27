@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using VisualPKI.Resources.Lang;
 using Org.BouncyCastle.OpenSsl;
 
 namespace VisualPKI.Views
@@ -11,9 +11,16 @@ namespace VisualPKI.Views
     public partial class PasswordFinder : Window, IPasswordFinder
     {
 
-        public PasswordFinder()
+        public Visibility SetPassword { get; set; }
+
+        public PasswordFinder(Boolean setPassword = false)
         {
+            SetPassword = setPassword ? Visibility.Visible : Visibility.Collapsed;
             InitializeComponent();
+            if (!setPassword)
+            {
+                this.Height = 150.0d;
+            }
         }
 
         #region Implementation of IPasswordFinder
@@ -27,7 +34,18 @@ namespace VisualPKI.Views
 
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (SetPassword == Visibility.Visible && !PasswordBox.Password.Equals(PasswordBoxConfirmation.Password))
+            {
+                MessageBox.Show(Strings.NotMatchingPasswords,
+                                Strings.InputError,
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                Close();
+            }
         }
+
     }
 }

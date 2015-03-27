@@ -17,6 +17,7 @@ using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using Utils.Text;
 using VisualPKI.Resources.Lang;
 using VisualPKI.Views;
 
@@ -28,13 +29,13 @@ namespace VisualPKI.Generation
 
         public static readonly Dictionary<String, IAsymmetricCipherKeyPairGenerator> SKeyAlgorithms = new Dictionary<String, IAsymmetricCipherKeyPairGenerator>()
         {
-            {Algorithms.DHBasic,new DHBasicKeyPairGenerator()},
-            {Algorithms.DH,new DHKeyPairGenerator()},
-            {Algorithms.DSA,new DsaKeyPairGenerator()},
-            {Algorithms.EC,new ECKeyPairGenerator()},
-            {Algorithms.ELGammal,new ElGamalKeyPairGenerator()},
-            {Algorithms.Gost3410,new Gost3410KeyPairGenerator()},
-            {Algorithms.NaccacheStern,new NaccacheSternKeyPairGenerator()},
+            //{Algorithms.DHBasic,new DHBasicKeyPairGenerator()},
+            //{Algorithms.DH,new DHKeyPairGenerator()},
+            //{Algorithms.DSA,new DsaKeyPairGenerator()},
+            //{Algorithms.EC,new ECKeyPairGenerator()},
+            //{Algorithms.ELGammal,new ElGamalKeyPairGenerator()},
+            //{Algorithms.Gost3410,new Gost3410KeyPairGenerator()},
+            //{Algorithms.NaccacheStern,new NaccacheSternKeyPairGenerator()},
             {Algorithms.RSA,new RsaKeyPairGenerator()}
         };
 
@@ -63,13 +64,17 @@ namespace VisualPKI.Generation
             {
                 while (result == null)
                 {
-
+                    file.Position = 0;
                     try
                     {
                         var reader = new PemReader(new StreamReader(file), finder);
                         result = (AsymmetricCipherKeyPair)reader.ReadObject();
                     }
                     catch (PasswordException)
+                    {
+                        ((PasswordFinder)finder).ShowDialog();
+                    }
+                    catch (InvalidCipherTextException)
                     {
                         ((PasswordFinder)finder).ShowDialog();
                     }
@@ -87,19 +92,19 @@ namespace VisualPKI.Generation
         }
 
 
-        public static void WritePrivateKey(AsymmetricCipherKeyPair keyPair, String path, String password = null)
+        public static void WritePrivateKey(AsymmetricCipherKeyPair keyPair, String path, char[] password = null)
         {
             using (var writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None)))
             {
                 var pemWriter = new PemWriter(writer);
-                if (password != null)
+                if (password != null && !new String(password).IsEmpty())
                 {
-                    pemWriter.WriteObject(keyPair, "DES-EDE3-CBC", password.ToCharArray(), new SecureRandom(new CryptoApiRandomGenerator()));
+                    pemWriter.WriteObject(keyPair.Private, "DES-EDE3-CBC", password, new SecureRandom(new CryptoApiRandomGenerator()));
 
                 }
                 else
                 {
-                    pemWriter.WriteObject(keyPair);
+                    pemWriter.WriteObject(keyPair.Private);
                 }
             }
         }

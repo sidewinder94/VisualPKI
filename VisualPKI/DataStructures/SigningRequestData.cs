@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.RightsManagement;
+using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.X509;
 
 namespace VisualPKI.DataStructures
@@ -19,15 +20,41 @@ namespace VisualPKI.DataStructures
 
         public X509Name GetX509Name()
         {
-            var dict = new Dictionary<String, String>(7)
+            var dict = new Dictionary<DerObjectIdentifier, String>(7);
+
+            if (Country != null)
             {
-                {"C", Country},
-                {"ST", State},
-                {"L", City},
-                {"O", Organization},
-                {"OU", OrganizationalUnit},
-                {"CN", String.Format("{0}/emailAddress={1}", DistinguishedName, MailAddress)}
-            };
+                dict.Add(X509Name.C, Country);
+            }
+            if (State != null)
+            {
+                dict.Add(X509Name.ST, State);
+            }
+            if (City != null)
+            {
+                dict.Add(X509Name.L, City);
+            }
+            if (Organization != null)
+            {
+                dict.Add(X509Name.O, Organization);
+            }
+            if (OrganizationalUnit != null)
+            {
+                dict.Add(X509Name.OU, OrganizationalUnit);
+            }
+            if (DistinguishedName != null || MailAddress != null)
+            {
+                if (DistinguishedName != null && MailAddress != null)
+                {
+                    dict.Add(X509Name.CN, String.Format("{0}/emailAddress={1}", DistinguishedName, MailAddress));
+                }
+                else
+                {
+                    dict.Add(X509Name.CN, DistinguishedName ?? MailAddress);
+                }
+
+            }
+
 
             return new X509Name(dict.Keys.ToList(), dict);
         }

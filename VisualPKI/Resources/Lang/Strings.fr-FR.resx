@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -212,5 +213,12 @@ d'enregistrement</value>
   </data>
   <data name="Open" xml:space="preserve">
     <value>Ouvrir</value>
+  </data>
+  <data name="PasswordConfirmation" xml:space="preserve">
+    <value>Vérification du mot de Passe</value>
+  </data>
+  <data name="NotMatchingPasswords" xml:space="preserve">
+    <value>Les mots de passe ne correspondent pas
+Laissez blanc pour ne pas définir de mot de passe</value>
   </data>
 </root>
