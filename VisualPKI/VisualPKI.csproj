@@ -75,6 +75,12 @@
     <Compile Include="DataStructures\SigningRequestData.cs" />
     <Compile Include="Generation\PrivateKey.cs" />
     <Compile Include="Generation\SelfSignedCertificate.cs" />
+    <Compile Include="Resources\Converter\SignatureAlgorithmsToHashesList.cs" />
+    <Compile Include="Resources\Lang\Algorithms.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Algorithms.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Lang\LocalizedStrings.cs" />
     <Compile Include="Resources\Lang\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -144,6 +150,11 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Lang\Algorithms.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Lang\Algorithms.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Algorithms.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lang\Strings.fr-FR.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

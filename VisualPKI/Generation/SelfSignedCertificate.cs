@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Org.BouncyCastle.Asn1.Ocsp;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Prng;
@@ -9,23 +12,85 @@ using Org.BouncyCastle.Math;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using Utils.Misc;
 using VisualPKI.DataStructures;
 using Utils.Text;
 using VisualPKI.Properties;
 
 namespace VisualPKI.Generation
 {
-    public static class SelfSignedCertificate
+    public class SelfSignedCertificate
     {
+        public static Dictionary<String, List<String>> SignatureAlgorithmsAndAssociatedHashes = new Dictionary<string, List<string>>()
+        {
+#region algorithms
+            {
+                "DSA", new List<String>()
+                {
+                    "SHA1"  
+                }
+            },
+            {
+                "ECDSA", new List<String>()
+                {
+                    "SHA1",
+                    "SHA224",
+                    "SHA256",
+                    "SHA384",
+                    "SHA512"
+                }
+            },
+            {
+                "GOST3410", new List<String>()
+                {
+                    "GOST3411"
+                }
+            },
+            {
+                "ECGOST3410", new List<String>()
+                {
+                    "GOST3411"
+                }
+            },
+            {
+                "RSA", new List<String>()
+                {
+                    "MD2",
+                    "MD5",
+                    "SHA1",
+                    "SHA224",
+                    "SHA256",
+                    "SHA384",
+                    "SHA512",
+                    "RIPEMD128",
+                    "RIPEMD160",
+                    "RIPEMD256"
+                }
+            }
+#endregion
+        };
+
+        public static List<String> SignatureAlgorithms
+        {
+            get { return SignatureAlgorithmsAndAssociatedHashes.Keys.ToList(); }
+        }
+
+        public SelfSignedCertificate()
+        {
+
+        }
+
         public static Tuple<AsymmetricCipherKeyPair, X509Certificate> Create(DateTime startDate,
             DateTime endDate,
             SigningRequestData csrData,
-            string privateKeyPath)
+            string privateKeyPath,
+            Tuple<String, int> keyParams,
+            String signatureAlgorithm)
         {
             AsymmetricCipherKeyPair keyPair = null;
             if (privateKeyPath.IsEmpty() || !File.Exists(privateKeyPath))
             {
-                keyPair = PrivateKey.GenerateKeyPair();
+                keyPair = PrivateKey.GenerateKeyPair(PrivateKey.SKeyAlgorithms[keyParams.Left()], keyParams.Right());
             }
             else
             {
@@ -40,7 +105,7 @@ namespace VisualPKI.Generation
             certGen.SetNotBefore(startDate);
             certGen.SetNotAfter(endDate);
             certGen.SetPublicKey(keyPair.Public);
-            certGen.SetSignatureAlgorithm("SHA1withRSA");
+            certGen.SetSignatureAlgorithm(signatureAlgorithm);
             X509Certificate cert = certGen.Generate(keyPair.Private);
             return new Tuple<AsymmetricCipherKeyPair, X509Certificate>(keyPair, cert);
         }

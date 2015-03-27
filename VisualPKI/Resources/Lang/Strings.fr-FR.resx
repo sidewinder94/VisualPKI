@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -204,5 +203,14 @@
   <data name="SavePath" xml:space="preserve">
     <value>Emplacement 
 d'enregistrement</value>
+  </data>
+  <data name="KeyStrength" xml:space="preserve">
+    <value>Longueur de la clé</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvrir</value>
   </data>
 </root>

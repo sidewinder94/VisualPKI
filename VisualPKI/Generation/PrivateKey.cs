@@ -1,6 +1,8 @@
 ﻿using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -15,16 +17,41 @@ using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using VisualPKI.Resources.Lang;
 using VisualPKI.Views;
 
 namespace VisualPKI.Generation
 {
-    public static class PrivateKey
+    public class PrivateKey
     {
-        public static AsymmetricCipherKeyPair GenerateKeyPair()
+        private readonly List<int> _keyStrenghts = new List<int>() { 128, 256, 512, 1024, 2048, 4096 };
+
+        public static readonly Dictionary<String, IAsymmetricCipherKeyPairGenerator> SKeyAlgorithms = new Dictionary<String, IAsymmetricCipherKeyPairGenerator>()
         {
-            var generator = new RsaKeyPairGenerator();
-            generator.Init(new KeyGenerationParameters(new SecureRandom(new CryptoApiRandomGenerator()), 2048));
+            {Algorithms.DHBasic,new DHBasicKeyPairGenerator()},
+            {Algorithms.DH,new DHKeyPairGenerator()},
+            {Algorithms.DSA,new DsaKeyPairGenerator()},
+            {Algorithms.EC,new ECKeyPairGenerator()},
+            {Algorithms.ELGammal,new ElGamalKeyPairGenerator()},
+            {Algorithms.Gost3410,new Gost3410KeyPairGenerator()},
+            {Algorithms.NaccacheStern,new NaccacheSternKeyPairGenerator()},
+            {Algorithms.RSA,new RsaKeyPairGenerator()}
+        };
+
+        public List<int> KeyStrengths { get { return _keyStrenghts; } }
+        public List<String> KeyAlgorithms
+        {
+            get { return SKeyAlgorithms.Keys.ToList(); }
+        }
+
+        public PrivateKey()
+        {
+
+        }
+
+        public static AsymmetricCipherKeyPair GenerateKeyPair(IAsymmetricCipherKeyPairGenerator generator, int strength)
+        {
+            generator.Init(new KeyGenerationParameters(new SecureRandom(new CryptoApiRandomGenerator()), strength));
             return generator.GenerateKeyPair();
         }
 

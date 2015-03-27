@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Dynamic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 
 using Microsoft.Win32;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Parameters;
 using Utils.Misc;
 using Utils.WPF;
 using VisualPKI.DataStructures;
@@ -20,9 +23,26 @@ namespace VisualPKI.Views
     /// </summary>
     public partial class SelfSignedCertificateWindow : Window, INotifyPropertyChanged
     {
+        #region Attributes and auto properties
         private DateTime _endDate;
         private DateTime _startDate;
         private String _privateKeyPath;
+        private String _signatureAlgorithm;
+        public String KeyAlgorithm { get; set; }
+        public int KeyStrength { get; set; }
+
+        public String SignatureAlgorithm
+        {
+            get { return _signatureAlgorithm; }
+            set
+            {
+                _signatureAlgorithm = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public String HashAlgorithm { get; set; }
+        public String SavePath { get; set; }
 
         public DateTime EndDate
         {
@@ -78,13 +98,13 @@ namespace VisualPKI.Views
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         public SelfSignedCertificateWindow()
         {
             _startDate = DateTime.Now;
             _endDate = DateTime.Now.AddDays(1);
             CSRData = new SigningRequestData();
-            PrivateKeyPath = "ttttttt";
             SerialNumber = Settings.Default.LastGeneratedSerial;
 
             InitializeComponent();
@@ -94,8 +114,10 @@ namespace VisualPKI.Views
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            var couple = SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath);
-            //TODO : Ajouter des listes déroulantes pour proposer les différents algorithmes de clés/signatures/etc...
+            var keyParameter = new Tuple<String, int>(KeyAlgorithm, KeyStrength);
+            var signatureAlgorithm = String.Format("{0}with{1}", HashAlgorithm, SignatureAlgorithm);
+
+            var couple = SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath, keyParameter, signatureAlgorithm);
         }
 
 

@@ -116,103 +116,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateSelfSignedCertificate" xml:space="preserve">
-    <value>Create a Self-Signed Certificate</value>
+  <data name="DHBasic" xml:space="preserve">
+    <value>DH Basic</value>
   </data>
-  <data name="CreateIntermediateCertificate" xml:space="preserve">
-    <value>Create en Intermediate Certificate</value>
+  <data name="DH" xml:space="preserve">
+    <value>DH</value>
   </data>
-  <data name="SignCertificateRequest" xml:space="preserve">
-    <value>Sign a Certificate Request</value>
+  <data name="DSA" xml:space="preserve">
+    <value>DSA</value>
   </data>
-  <data name="AppName" xml:space="preserve">
-    <value>VisualPKI</value>
+  <data name="EC" xml:space="preserve">
+    <value>ECDSA</value>
   </data>
-  <data name="Optionnal" xml:space="preserve">
-    <value>Optionnal</value>
+  <data name="ELGammal" xml:space="preserve">
+    <value>EL Gammal</value>
   </data>
-  <data name="StartDate" xml:space="preserve">
-    <value>Start Date</value>
+  <data name="Gost3410" xml:space="preserve">
+    <value>GOST 3410</value>
   </data>
-  <data name="EndDate" xml:space="preserve">
-    <value>End Date</value>
+  <data name="NaccacheStern" xml:space="preserve">
+    <value>Naccache Stern</value>
   </data>
-  <data name="SerialNumber" xml:space="preserve">
-    <value>Serial Number</value>
-  </data>
-  <data name="PrivateKey" xml:space="preserve">
-    <value>Private Key (if existing)</value>
-  </data>
-  <data name="IncorrectEndDate" xml:space="preserve">
-    <value>Expiration Date is set before Starting Date !</value>
-  </data>
-  <data name="InputError" xml:space="preserve">
-    <value>Input Error</value>
-  </data>
-  <data name="IncorrectStartDate" xml:space="preserve">
-    <value>Starting Date is set after Expiration Date !</value>
-  </data>
-  <data name="Browse" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="OFileDialogPK" xml:space="preserve">
-    <value>Please Select Private Key</value>
-  </data>
-  <data name="DomainName" xml:space="preserve">
-    <value>Name (Domain or Fullname)</value>
-  </data>
-  <data name="Organization" xml:space="preserve">
-    <value>Organization</value>
-  </data>
-  <data name="OrganisationalUnit" xml:space="preserve">
-    <value>Organisational Unit</value>
-  </data>
-  <data name="Town" xml:space="preserve">
-    <value>Town</value>
-  </data>
-  <data name="State" xml:space="preserve">
-    <value>State/Region</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>Country</value>
-  </data>
-  <data name="MailAddress" xml:space="preserve">
-    <value>Mail Address</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Create !</value>
-  </data>
-  <data name="PasswordRequired" xml:space="preserve">
-    <value>Password Required</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="GenerationParams" xml:space="preserve">
-    <value>Generation Parameters</value>
-  </data>
-  <data name="KeyAlgorithm" xml:space="preserve">
-    <value>Key Algorithm</value>
-  </data>
-  <data name="SignatureAlgorithm" xml:space="preserve">
-    <value>Signature Algorithm</value>
-  </data>
-  <data name="Digest" xml:space="preserve">
-    <value>Digest</value>
-  </data>
-  <data name="SavePath" xml:space="preserve">
-    <value>Save Path</value>
-  </data>
-  <data name="KeyStrength" xml:space="preserve">
-    <value>Key Length</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Open" xml:space="preserve">
-    <value>Open</value>
+  <data name="RSA" xml:space="preserve">
+    <value>RSA</value>
   </data>
 </root>

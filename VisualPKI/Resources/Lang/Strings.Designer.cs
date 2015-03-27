@@ -187,6 +187,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Key Length.
+        /// </summary>
+        public static string KeyStrength {
+            get {
+                return ResourceManager.GetString("KeyStrength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Mail Address.
         /// </summary>
         public static string MailAddress {
@@ -210,6 +219,15 @@ namespace VisualPKI.Resources.Lang {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Open.
+        /// </summary>
+        public static string Open {
+            get {
+                return ResourceManager.GetString("Open", resourceCulture);
             }
         }
         
@@ -264,6 +282,15 @@ namespace VisualPKI.Resources.Lang {
         public static string PrivateKey {
             get {
                 return ResourceManager.GetString("PrivateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
