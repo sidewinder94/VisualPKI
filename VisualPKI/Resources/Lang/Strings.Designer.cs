@@ -79,6 +79,24 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à CA Certificate.
+        /// </summary>
+        public static string CACertificate {
+            get {
+                return ResourceManager.GetString("CACertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à CA Private Key.
+        /// </summary>
+        public static string CAPrivateKey {
+            get {
+                return ResourceManager.GetString("CAPrivateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Country.
         /// </summary>
         public static string Country {
@@ -97,7 +115,7 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Create en Intermediate Certificate.
+        ///   Recherche une chaîne localisée semblable à Create an Intermediate Certificate.
         /// </summary>
         public static string CreateIntermediateCertificate {
             get {

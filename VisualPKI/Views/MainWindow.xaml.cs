@@ -11,7 +11,7 @@ namespace VisualPKI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Dictionary<Type, Window> _instantiatedWindows = new Dictionary<Type, Window>();
+        public static readonly Dictionary<Type, Window> InstantiatedWindows = new Dictionary<Type, Window>();
         public MainWindow()
         {
             InitializeComponent();
@@ -20,20 +20,34 @@ namespace VisualPKI.Views
 
         private void SelfSignButton_Click(object sender, RoutedEventArgs e)
         {
-            SelfSignedCertificateWindow window = null;
-            if (!_instantiatedWindows.ContainsKey(typeof(SelfSignedCertificateWindow)))
+            ShowWindow<SelfSignedCertificateWindow>();
+        }
+
+        private void IntermediateCertificateButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow<IntermediateCertificateWindow>();
+        }
+
+
+        private void SignCertificateRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow<SignCrWindow>();
+        }
+
+        private static void ShowWindow<T>() where T : Window, new()
+        {
+            T window;
+            if (!InstantiatedWindows.ContainsKey(typeof(T)))
             {
-                window = new SelfSignedCertificateWindow();
-                this._instantiatedWindows.Add(window.GetType(), window);
+                window = new T();
+                InstantiatedWindows.Add(window.GetType(), window);
             }
             else
             {
-                window = (SelfSignedCertificateWindow)_instantiatedWindows[typeof(SelfSignedCertificateWindow)];
+                window = (T)InstantiatedWindows[typeof(T)];
             }
-
             window.Show();
             window.Focus();
         }
-
     }
 }

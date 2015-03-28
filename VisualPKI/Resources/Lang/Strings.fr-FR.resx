@@ -223,4 +223,10 @@ Laissez blanc pour ne pas définir de mot de passe</value>
   <data name="InvalidMail" xml:space="preserve">
     <value>L'adresse Mail ne parait pas valide</value>
   </data>
+  <data name="CAPrivateKey" xml:space="preserve">
+    <value>Clé privée de l'AC</value>
+  </data>
+  <data name="CACertificate" xml:space="preserve">
+    <value>Certificat de l'AC</value>
+  </data>
 </root>

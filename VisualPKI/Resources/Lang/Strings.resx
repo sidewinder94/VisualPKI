@@ -120,7 +120,7 @@
     <value>Create a Self-Signed Certificate</value>
   </data>
   <data name="CreateIntermediateCertificate" xml:space="preserve">
-    <value>Create en Intermediate Certificate</value>
+    <value>Create an Intermediate Certificate</value>
   </data>
   <data name="SignCertificateRequest" xml:space="preserve">
     <value>Sign a Certificate Request</value>
@@ -224,5 +224,11 @@ Leave blank to let the key unprotected</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>The specified Email appears to be invalid</value>
+  </data>
+  <data name="CAPrivateKey" xml:space="preserve">
+    <value>CA Private Key</value>
+  </data>
+  <data name="CACertificate" xml:space="preserve">
+    <value>CA Certificate</value>
   </data>
 </root>

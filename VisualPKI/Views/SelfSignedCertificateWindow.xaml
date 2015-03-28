@@ -12,7 +12,7 @@
         mc:Ignorable="d" 
         x:Class="VisualPKI.Views.SelfSignedCertificateWindow" 
         Height="640"
-        Width="580">
+        Width="580" Closed="Window_Closed">
     <Window.Resources>
         <Converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
         <g:PrivateKey x:Key="PKGenerator"/>
