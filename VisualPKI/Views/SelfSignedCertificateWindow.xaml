@@ -17,40 +17,6 @@
         <Converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
         <g:PrivateKey x:Key="PKGenerator"/>
         <g:SelfSignedCertificate x:Key="SelfSignedCertificate"/>
-        <v:EmailRule x:Key="EmailRule"/>
-        <Style TargetType="{x:Type u:FilePicker}" x:Key="FilePickerStyle">
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="10,0"/>
-        </Style>
-        <Style TargetType="{x:Type GroupBox}" x:Key="GroupStyle">
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style TargetType="{x:Type Label}" x:Key="LabelStyle">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="10,0"/>
-        </Style>
-        <Style TargetType="{x:Type DatePicker}" x:Key="DateStyle">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment"  Value="Center"/>
-        </Style>
-        <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyle">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="10,0"/>
-        </Style>
-        <Style TargetType="{x:Type Button}" x:Key="ButtonStyle">
-            <Setter Property="Margin" Value="10,0"/>
-            <Setter Property="Padding" Value="5,0"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-        <Style TargetType="{x:Type ComboBox}" x:Key="ComboboxStyle">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="10, 0"/>
-        </Style>
     </Window.Resources>
     <Window.Title>
         <Binding Path="Locale.CreateSelfSignedCertificate" Source="{StaticResource LocalizedStrings}"/>
@@ -155,6 +121,6 @@
                 <!--Controls-->
             </Grid>
         </GroupBox>
-        <Button Grid.Row="6" Grid.Column="1"  Style="{StaticResource ButtonStyle}" Content="{Binding Locale.Create, Source={StaticResource LocalizedStrings}}" Click="CreateButton_Click"/>
+        <Button Grid.Row="6" Grid.Column="1"  Style="{StaticResource ValidationButtonStyle}" Content="{Binding Locale.Create, Source={StaticResource LocalizedStrings}}" Click="CreateButton_Click"/>
     </Grid>
 </Window>
