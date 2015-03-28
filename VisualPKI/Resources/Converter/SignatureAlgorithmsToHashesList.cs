@@ -23,7 +23,7 @@ namespace VisualPKI.Resources.Converter
             {
                 return SelfSignedCertificate.SignatureAlgorithmsAndAssociatedHashes[(String)value];
             }
-            else return new List<String>();
+            return new List<String>();
         }
 
         /// <summary>

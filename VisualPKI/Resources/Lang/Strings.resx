@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -222,5 +221,8 @@
   <data name="NotMatchingPasswords" xml:space="preserve">
     <value>Passswords do not match
 Leave blank to let the key unprotected</value>
+  </data>
+  <data name="InvalidMail" xml:space="preserve">
+    <value>The specified Email appears to be invalid</value>
   </data>
 </root>

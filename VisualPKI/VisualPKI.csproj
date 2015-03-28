@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Validators\EmailRule.cs" />
     <Compile Include="Views\IntermediateCertificateWindow.xaml.cs">
       <DependentUpon>IntermediateCertificateWindow.xaml</DependentUpon>
     </Compile>

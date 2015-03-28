@@ -178,6 +178,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified Email appears to be invalid.
+        /// </summary>
+        public static string InvalidMail {
+            get {
+                return ResourceManager.GetString("InvalidMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Key Algorithm.
         /// </summary>
         public static string KeyAlgorithm {

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:u="clr-namespace:Utils.WPF;assembly=Utils"
-        xmlns:k="clr-namespace:VisualPKI.Generation"
+        xmlns:g="clr-namespace:VisualPKI.Generation"
+        xmlns:v="clr-namespace:VisualPKI.Resources.Validators"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:VisualPKI.Views" 
         xmlns:Converter="clr-namespace:VisualPKI.Resources.Converter" 
@@ -11,11 +12,12 @@
         mc:Ignorable="d" 
         x:Class="VisualPKI.Views.SelfSignedCertificateWindow" 
         Height="640"
-        Width="333">
+        Width="580">
     <Window.Resources>
         <Converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
-        <k:PrivateKey x:Key="PKGenerator"/>
-        <k:SelfSignedCertificate x:Key="SelfSignedCertificate"/>
+        <g:PrivateKey x:Key="PKGenerator"/>
+        <g:SelfSignedCertificate x:Key="SelfSignedCertificate"/>
+        <v:EmailRule x:Key="EmailRule"/>
         <Style TargetType="{x:Type u:FilePicker}" x:Key="FilePickerStyle">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -111,7 +113,15 @@
                 <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding City}"/>
                 <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding State}"/>
                 <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Country}"/>
-                <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding MailAddress}"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}" >
+                    <TextBox.Text>
+                        <Binding Path="MailAddress">
+                            <Binding.ValidationRules>
+                                <v:EmailRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <!--Controls-->
             </Grid>
 
@@ -137,10 +147,10 @@
                 <Label Grid.Row="4" Grid.Column="0" Content="{Binding Locale.SavePath, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
                 <!--Labels-->
                 <!--Controls-->
-                <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding KeyAlgorithms, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedValue="{Binding KeyAlgorithm}" Style="{StaticResource ComboboxStyle}" SelectedIndex="0"/>
+                <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding KeyAlgorithms, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedValue="{Binding KeyAlgorithm}" Style="{StaticResource ComboboxStyle}" SelectedIndex="7" IsEnabled="False"/>
                 <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding KeyStrengths, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedItem="{Binding KeyStrength}" Style="{StaticResource ComboboxStyle}" SelectedIndex="4"/>
-                <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="0"/>
-                <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="0"/>
+                <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="False"/>
+                <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
                 <u:FilePicker Grid.Row="4" Grid.Column="1"  ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" FilePath="{Binding SavePath, Mode=TwoWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" Style="{StaticResource FilePickerStyle}" Title="{Binding Path=Locale.Save, Source={StaticResource LocalizedStrings}}" Type="Save"/>
                 <!--Controls-->
             </Grid>

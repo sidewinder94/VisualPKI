@@ -24,34 +24,34 @@ namespace VisualPKI.Generation
         public static Dictionary<String, List<String>> SignatureAlgorithmsAndAssociatedHashes = new Dictionary<string, List<string>>()
         {
 #region algorithms
-            //{
-            //    "DSA", new List<String>()
-            //    {
-            //        "SHA1"  
-            //    }
-            //},
-            //{
-            //    "ECDSA", new List<String>()
-            //    {
-            //        "SHA1",
-            //        "SHA224",
-            //        "SHA256",
-            //        "SHA384",
-            //        "SHA512"
-            //    }
-            //},
-            //{
-            //    "GOST3410", new List<String>()
-            //    {
-            //        "GOST3411"
-            //    }
-            //},
-            //{
-            //    "ECGOST3410", new List<String>()
-            //    {
-            //        "GOST3411"
-            //    }
-            //},
+            {
+                "DSA", new List<String>()
+                {
+                    "SHA1"  
+                }
+            },
+            {
+                "ECDSA", new List<String>()
+                {
+                    "SHA1",
+                    "SHA224",
+                    "SHA256",
+                    "SHA384",
+                    "SHA512"
+                }
+            },
+            {
+                "GOST3410", new List<String>()
+                {
+                    "GOST3411"
+                }
+            },
+            {
+                "ECGOST3410", new List<String>()
+                {
+                    "GOST3411"
+                }
+            },
             {
                 "RSA", new List<String>()
                 {

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -220,5 +219,8 @@ d'enregistrement</value>
   <data name="NotMatchingPasswords" xml:space="preserve">
     <value>Les mots de passe ne correspondent pas
 Laissez blanc pour ne pas définir de mot de passe</value>
+  </data>
+  <data name="InvalidMail" xml:space="preserve">
+    <value>L'adresse Mail ne parait pas valide</value>
   </data>
 </root>

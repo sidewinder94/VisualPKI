@@ -29,13 +29,13 @@ namespace VisualPKI.Generation
 
         public static readonly Dictionary<String, IAsymmetricCipherKeyPairGenerator> SKeyAlgorithms = new Dictionary<String, IAsymmetricCipherKeyPairGenerator>()
         {
-            //{Algorithms.DHBasic,new DHBasicKeyPairGenerator()},
-            //{Algorithms.DH,new DHKeyPairGenerator()},
-            //{Algorithms.DSA,new DsaKeyPairGenerator()},
-            //{Algorithms.EC,new ECKeyPairGenerator()},
-            //{Algorithms.ELGammal,new ElGamalKeyPairGenerator()},
-            //{Algorithms.Gost3410,new Gost3410KeyPairGenerator()},
-            //{Algorithms.NaccacheStern,new NaccacheSternKeyPairGenerator()},
+            {Algorithms.DHBasic,new DHBasicKeyPairGenerator()},
+            {Algorithms.DH,new DHKeyPairGenerator()},
+            {Algorithms.DSA,new DsaKeyPairGenerator()},
+            {Algorithms.EC,new ECKeyPairGenerator()},
+            {Algorithms.ELGammal,new ElGamalKeyPairGenerator()},
+            {Algorithms.Gost3410,new Gost3410KeyPairGenerator()},
+            {Algorithms.NaccacheStern,new NaccacheSternKeyPairGenerator()},
             {Algorithms.RSA,new RsaKeyPairGenerator()}
         };
 
