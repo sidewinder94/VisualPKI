@@ -21,7 +21,7 @@ namespace VisualPKI.Resources.Converter
         {
             if (value != null && value is String)
             {
-                return SelfSignedCertificate.SignatureAlgorithmsAndAssociatedHashes[(String)value];
+                return Certificate.SignatureAlgorithmsAndAssociatedHashes[(String)value];
             }
             return new List<String>();
         }

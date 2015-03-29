@@ -10,6 +10,7 @@ namespace VisualPKI.Views
     /// </summary>
     public partial class PasswordFinder : Window, IPasswordFinder
     {
+        public Boolean Validated = false;
 
         public Visibility SetPassword { get; set; }
 
@@ -43,6 +44,7 @@ namespace VisualPKI.Views
             }
             else
             {
+                Validated = true;
                 Close();
             }
         }

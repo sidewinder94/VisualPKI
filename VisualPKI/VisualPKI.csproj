@@ -74,7 +74,8 @@
     </ApplicationDefinition>
     <Compile Include="DataStructures\SigningRequestData.cs" />
     <Compile Include="Generation\PrivateKey.cs" />
-    <Compile Include="Generation\SelfSignedCertificate.cs" />
+    <Compile Include="Generation\Certificate.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\Converter\SignatureAlgorithmsToHashesList.cs" />
     <Compile Include="Resources\Lang\Algorithms.Designer.cs">
       <AutoGen>True</AutoGen>

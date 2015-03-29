@@ -231,4 +231,13 @@ Leave blank to let the key unprotected</value>
   <data name="CACertificate" xml:space="preserve">
     <value>CA Certificate</value>
   </data>
+  <data name="Extensions" xml:space="preserve">
+    <value>Extensions</value>
+  </data>
+  <data name="InvalidCert" xml:space="preserve">
+    <value>Invalid Certificate</value>
+  </data>
+  <data name="InvalidPkey" xml:space="preserve">
+    <value>Invalid Private key</value>
+  </data>
 </root>

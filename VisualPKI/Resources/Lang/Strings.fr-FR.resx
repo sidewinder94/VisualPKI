@@ -229,4 +229,13 @@ Laissez blanc pour ne pas définir de mot de passe</value>
   <data name="CACertificate" xml:space="preserve">
     <value>Certificat de l'AC</value>
   </data>
+  <data name="Extensions" xml:space="preserve">
+    <value>Extensions</value>
+  </data>
+  <data name="InvalidCert" xml:space="preserve">
+    <value>Certificat Invalide</value>
+  </data>
+  <data name="InvalidPkey" xml:space="preserve">
+    <value>Clé privée invalide</value>
+  </data>
 </root>

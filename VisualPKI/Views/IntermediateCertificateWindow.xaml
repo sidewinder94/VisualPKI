@@ -1,27 +1,123 @@
-﻿<Window x:Class="VisualPKI.Views.IntermediateCertificateWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:u="clr-namespace:Utils.WPF;assembly=Utils"
-        Title="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.CreateIntermediateCertificate}" 
-        Height="300" 
-        Width="300" Closed="Window_Closed">
+        xmlns:local="clr-namespace:VisualPKI.Views"
+        xmlns:validators="clr-namespace:VisualPKI.Resources.Validators"
+        x:Class="VisualPKI.Views.IntermediateCertificateWindow"
+        Title="{Binding Locale.CreateIntermediateCertificate, Source={StaticResource LocalizedStrings}}" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        MinHeight="640"
+        Height="640" 
+        Width="500" 
+        Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Labels-->
-        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Path=Locale.CACertificate, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=Locale.CAPrivateKey, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Locale.CACertificate, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="{Binding Locale.CAPrivateKey, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="{Binding Locale.StartDate, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="{Binding Locale.EndDate, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="{Binding Locale.SerialNumber, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
         <!--Labels-->
         <!--Controls-->
-        <u:FilePicker Grid.Row="0" Grid.Column="1" Style="{StaticResource FilePickerStyle}"/>
-        <u:FilePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource FilePickerStyle}"/>
+        <u:FilePicker Grid.Row="0" Grid.Column="1" FilePath="{Binding CACertificatePath, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:IntermediateCertificateWindow}}}" ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" Style="{StaticResource FilePickerStyle}"/>
+        <u:FilePicker Grid.Row="1" Grid.Column="1" FilePath="{Binding CAPkeyPath, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:IntermediateCertificateWindow}}}" ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" Style="{StaticResource FilePickerStyle}"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding StartDate}" Style="{StaticResource DateStyle}"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding EndDate}" Style="{StaticResource DateStyle}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SerialNumber}" Style="{StaticResource TextBoxStyle}" TextAlignment="Right" IsEnabled="False"/>
         <!--Controls-->
+        <!--Holder Informations-->
+        <GroupBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Header="{Binding Locale.Optionnal, Source={StaticResource LocalizedStrings}}" Style="{StaticResource GroupStyle}">
+            <Grid DataContext="{Binding CSRData}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <!--Labels-->
+                <Label Grid.Row="0" Grid.Column="0" Content="{Binding Locale.DomainName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="{Binding Locale.Organization, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="{Binding Locale.OrganisationalUnit, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="{Binding Locale.Country, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="{Binding Locale.State, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="{Binding Locale.Town, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="6" Grid.Column="0" Content="{Binding Locale.MailAddress, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <!--Labels-->
+                <!--Controls-->
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding DistinguishedName}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Organization}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding OrganizationalUnit}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding City}"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding State}"/>
+                <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Country}"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}">
+                    <TextBox.Text>
+                        <Binding Path="MailAddress">
+                            <Binding.ValidationRules>
+                                <validators:EmailRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <!--Controls-->
+            </Grid>
+
+        </GroupBox>
+        <!--Holder Informations-->
+        <!--Generation Parameters-->
+        <GroupBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Header="{Binding Locale.GenerationParams, Source={StaticResource LocalizedStrings}}" Style="{StaticResource GroupStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Labels-->
+                <Label Grid.Row="0" Grid.Column="0" Content="{Binding Locale.KeyAlgorithm, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="{Binding Locale.KeyStrength, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="{Binding Locale.SignatureAlgorithm, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="{Binding Locale.Digest, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="{Binding Locale.SavePath, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+                <!--Labels-->
+                <!--Controls-->
+                <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding KeyAlgorithms, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedValue="{Binding KeyAlgorithm}" Style="{StaticResource ComboboxStyle}" SelectedIndex="7" IsEnabled="False"/>
+                <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding KeyStrengths, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedItem="{Binding KeyStrength}" Style="{StaticResource ComboboxStyle}" SelectedIndex="4"/>
+                <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="False"/>
+                <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
+                <u:FilePicker Grid.Row="4" Grid.Column="1"  ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" FilePath="{Binding SavePath, Mode=TwoWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:IntermediateCertificateWindow}}}" Style="{StaticResource FilePickerStyle}" Title="{Binding Path=Locale.Save, Source={StaticResource LocalizedStrings}}" Type="Save"/>
+                <!--Controls-->
+            </Grid>
+        </GroupBox>
+        <!--Generation Parameters-->
+        <Button Grid.Row="7" Grid.Column="1"  Style="{StaticResource ValidationButtonStyle}" Content="{Binding Locale.Create, Source={StaticResource LocalizedStrings}}" Click="CreateButton_Click"/>
     </Grid>
 </Window>

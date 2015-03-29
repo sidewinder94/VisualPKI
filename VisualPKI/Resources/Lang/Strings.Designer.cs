@@ -160,6 +160,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Extensions.
+        /// </summary>
+        public static string Extensions {
+            get {
+                return ResourceManager.GetString("Extensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Generation Parameters.
         /// </summary>
         public static string GenerationParams {
@@ -196,11 +205,29 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Invalid Certificate.
+        /// </summary>
+        public static string InvalidCert {
+            get {
+                return ResourceManager.GetString("InvalidCert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The specified Email appears to be invalid.
         /// </summary>
         public static string InvalidMail {
             get {
                 return ResourceManager.GetString("InvalidMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Invalid Private key.
+        /// </summary>
+        public static string InvalidPkey {
+            get {
+                return ResourceManager.GetString("InvalidPkey", resourceCulture);
             }
         }
         

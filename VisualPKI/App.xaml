@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:locale ="clr-namespace:VisualPKI.Resources.Lang"
              xmlns:u="clr-namespace:Utils.WPF;assembly=Utils"
+             xmlns:converter="clr-namespace:VisualPKI.Resources.Converter"
+             xmlns:generation="clr-namespace:VisualPKI.Generation"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        <converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
+        <generation:PrivateKey x:Key="PKGenerator"/>
+        <generation:Certificate x:Key="SelfSignedCertificate"/>
          <locale:LocalizedStrings x:Key="LocalizedStrings"/>
         <Style TargetType="{x:Type u:FilePicker}" x:Key="FilePickerStyle">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>

@@ -1,22 +1,13 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Org.BouncyCastle.Asn1;
-using Org.BouncyCastle.Asn1.Pkcs;
+using System.Windows.Input;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Encodings;
-using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Generators;
-using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
-using Org.BouncyCastle.X509;
 using Utils.Text;
 using VisualPKI.Resources.Lang;
 using VisualPKI.Views;
@@ -78,6 +69,10 @@ namespace VisualPKI.Generation
                     {
                         ((PasswordFinder)finder).ShowDialog();
                     }
+                    if (!((PasswordFinder)finder).Validated)
+                    {
+                        break;
+                    }
                 }
             }
             catch (Exception e)
@@ -90,7 +85,6 @@ namespace VisualPKI.Generation
             }
             return result;
         }
-
 
         public static void WritePrivateKey(AsymmetricCipherKeyPair keyPair, String path, char[] password = null)
         {

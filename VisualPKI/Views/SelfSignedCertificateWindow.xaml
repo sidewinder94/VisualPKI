@@ -3,20 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:u="clr-namespace:Utils.WPF;assembly=Utils"
-        xmlns:g="clr-namespace:VisualPKI.Generation"
         xmlns:v="clr-namespace:VisualPKI.Resources.Validators"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:VisualPKI.Views" 
-        xmlns:Converter="clr-namespace:VisualPKI.Resources.Converter" 
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         mc:Ignorable="d" 
         x:Class="VisualPKI.Views.SelfSignedCertificateWindow" 
+        MinHeight="640"
         Height="640"
         Width="580" Closed="Window_Closed">
     <Window.Resources>
-        <Converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
-        <g:PrivateKey x:Key="PKGenerator"/>
-        <g:SelfSignedCertificate x:Key="SelfSignedCertificate"/>
     </Window.Resources>
     <Window.Title>
         <Binding Path="Locale.CreateSelfSignedCertificate" Source="{StaticResource LocalizedStrings}"/>
@@ -43,7 +39,7 @@
         <!--Labels-->
         <!--Controls-->
         <!--Controls-->
-        <DatePicker Grid.Column="1" Grid.Row="0" SelectedDate="{Binding StartDate}" Style="{StaticResource DateStyle}" x:Name="StartDatePicker"/>
+        <DatePicker Grid.Column="1" Grid.Row="0" SelectedDate="{Binding StartDate}" Style="{StaticResource DateStyle}"/>
         <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate}" Style="{StaticResource DateStyle}"/>
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SerialNumber}" Style="{StaticResource TextBoxStyle}" TextAlignment="Right" IsEnabled="False"/>
         <u:FilePicker Grid.Row="3" Grid.Column="1" FilePath="{Binding PrivateKeyPath, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" Title="{Binding Path=Locale.Open,Source={StaticResource LocalizedStrings}}" Style="{StaticResource FilePickerStyle}"/>
@@ -116,7 +112,7 @@
                 <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding KeyAlgorithms, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedValue="{Binding KeyAlgorithm}" Style="{StaticResource ComboboxStyle}" SelectedIndex="7" IsEnabled="False"/>
                 <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding KeyStrengths, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedItem="{Binding KeyStrength}" Style="{StaticResource ComboboxStyle}" SelectedIndex="4"/>
                 <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="False"/>
-                <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
+                <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
                 <u:FilePicker Grid.Row="4" Grid.Column="1"  ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" FilePath="{Binding SavePath, Mode=TwoWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" Style="{StaticResource FilePickerStyle}" Title="{Binding Path=Locale.Save, Source={StaticResource LocalizedStrings}}" Type="Save"/>
                 <!--Controls-->
             </Grid>

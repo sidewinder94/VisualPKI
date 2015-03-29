@@ -42,17 +42,15 @@ namespace VisualPKI.DataStructures
             {
                 dict.Add(X509Name.OU, OrganizationalUnit);
             }
-            if (DistinguishedName != null || MailAddress != null)
-            {
-                if (DistinguishedName != null && MailAddress != null)
-                {
-                    dict.Add(X509Name.CN, String.Format("{0}/emailAddress={1}", DistinguishedName, MailAddress));
-                }
-                else
-                {
-                    dict.Add(X509Name.CN, DistinguishedName ?? MailAddress);
-                }
+            if (DistinguishedName == null && MailAddress == null) return new X509Name(dict.Keys.ToList(), dict);
 
+            if (DistinguishedName != null && MailAddress != null)
+            {
+                dict.Add(X509Name.CN, String.Format("{0}/emailAddress={1}", DistinguishedName, MailAddress));
+            }
+            else
+            {
+                dict.Add(X509Name.CN, DistinguishedName ?? MailAddress);
             }
 
 

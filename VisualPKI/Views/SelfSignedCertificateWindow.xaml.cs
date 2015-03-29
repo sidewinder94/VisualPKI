@@ -118,11 +118,11 @@ namespace VisualPKI.Views
             var keyParameter = new Tuple<String, int>(KeyAlgorithm, KeyStrength);
             var signatureAlgorithm = String.Format("{0}with{1}", HashAlgorithm, SignatureAlgorithm);
 
-            var couple = SelfSignedCertificate.Create(StartDate, EndDate, CSRData, _privateKeyPath, keyParameter, signatureAlgorithm);
+            var couple = Certificate.CreateSelfSigned(StartDate, EndDate, CSRData, _privateKeyPath, keyParameter, signatureAlgorithm);
 
             String baseName = SavePath.RegExpReplace(@"\.\w+$", "");
 
-            SelfSignedCertificate.WriteCertificate(couple.Right(), SavePath);
+            Certificate.WriteCertificate(couple.Right(), SavePath);
             var finder = new PasswordFinder(true);
 
             finder.ShowDialog();
