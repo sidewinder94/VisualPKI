@@ -238,4 +238,19 @@ Laissez blanc pour ne pas définir de mot de passe</value>
   <data name="InvalidPkey" xml:space="preserve">
     <value>Clé privée invalide</value>
   </data>
+  <data name="CACertificateExpired" xml:space="preserve">
+    <value>Le certificat de l'AC n'est valable que jusqu'au {0}</value>
+  </data>
+  <data name="CACertificateNotStarted" xml:space="preserve">
+    <value>Le certificat de l'AC est valide à partir du {0}</value>
+  </data>
+  <data name="DisplayCertificateInformations" xml:space="preserve">
+    <value>Afficher les Informations du certificat</value>
+  </data>
+  <data name="IssuerDN" xml:space="preserve">
+    <value>Nom de l'émetteur</value>
+  </data>
+  <data name="DisplayLastCertificateInfo" xml:space="preserve">
+    <value>Afficher les informations du dernier certificat</value>
+  </data>
 </root>

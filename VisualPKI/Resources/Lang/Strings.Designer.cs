@@ -88,6 +88,24 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The CA certificate is only valid until {0}.
+        /// </summary>
+        public static string CACertificateExpired {
+            get {
+                return ResourceManager.GetString("CACertificateExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The CA certificate is valid from {0}.
+        /// </summary>
+        public static string CACertificateNotStarted {
+            get {
+                return ResourceManager.GetString("CACertificateNotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à CA Private Key.
         /// </summary>
         public static string CAPrivateKey {
@@ -138,6 +156,24 @@ namespace VisualPKI.Resources.Lang {
         public static string Digest {
             get {
                 return ResourceManager.GetString("Digest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Display Certificate Informations.
+        /// </summary>
+        public static string DisplayCertificateInformations {
+            get {
+                return ResourceManager.GetString("DisplayCertificateInformations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Display Last Certificate Informations.
+        /// </summary>
+        public static string DisplayLastCertificateInfo {
+            get {
+                return ResourceManager.GetString("DisplayLastCertificateInfo", resourceCulture);
             }
         }
         
@@ -228,6 +264,15 @@ namespace VisualPKI.Resources.Lang {
         public static string InvalidPkey {
             get {
                 return ResourceManager.GetString("InvalidPkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Issuer Name.
+        /// </summary>
+        public static string IssuerDN {
+            get {
+                return ResourceManager.GetString("IssuerDN", resourceCulture);
             }
         }
         

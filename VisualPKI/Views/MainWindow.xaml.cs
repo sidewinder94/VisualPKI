@@ -34,7 +34,12 @@ namespace VisualPKI.Views
             ShowWindow<SignCrWindow>();
         }
 
-        private static void ShowWindow<T>() where T : Window, new()
+        private void DisplayLastCertificateInfo_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow<DisplayCertificateInformations>();
+        }
+
+        public static void ShowWindow<T>() where T : Window, new()
         {
             T window;
             if (!InstantiatedWindows.ContainsKey(typeof(T)))
@@ -48,6 +53,11 @@ namespace VisualPKI.Views
             }
             window.Show();
             window.Focus();
+        }
+
+        public static T GetWindow<T>() where T : Window
+        {
+            return (T)InstantiatedWindows[typeof(T)];
         }
     }
 }

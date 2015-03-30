@@ -65,8 +65,6 @@ namespace VisualPKI.Views
             }
         }
 
-        public SigningRequestData CSRData { get; private set; }
-
         public DateTime StartDate
         {
             get { return _startDate; }
@@ -75,9 +73,9 @@ namespace VisualPKI.Views
                 if (value > EndDate)
                 {
                     MessageBox.Show(Strings.IncorrectStartDate,
-                                    Strings.InputError,
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Exclamation);
+                        Strings.InputError,
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Exclamation);
                 }
                 else
                 {
@@ -87,6 +85,8 @@ namespace VisualPKI.Views
 
             }
         }
+
+        public SigningRequestData CSRData { get; private set; }
 
         public int SerialNumber { get; private set; }
 

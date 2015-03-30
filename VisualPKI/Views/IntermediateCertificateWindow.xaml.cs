@@ -6,6 +6,7 @@ using System.Windows;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.X509;
 using Utils.Misc;
+using Utils.Text;
 using VisualPKI.Annotations;
 using VisualPKI.DataStructures;
 using VisualPKI.Generation;
@@ -29,10 +30,71 @@ namespace VisualPKI.Views
 
         private String _caCertificatePath;
         private String _caPkeyPath;
+        private DateTime _startDate;
+        private DateTime _endDate;
 
         public String SavePath { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+
+        public DateTime EndDate
+        {
+            get { return _endDate; }
+            set
+            {
+                if (value < StartDate)
+                {
+                    MessageBox.Show(Strings.IncorrectEndDate,
+                                    Strings.InputError,
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    if (_caX509Certificate != null && !_caX509Certificate.IsValid(value))
+                    {
+                        MessageBox.Show(String.Format(Strings.CACertificateExpired, _caX509Certificate.NotAfter),
+                                        Strings.InputError,
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Exclamation);
+                    }
+                    else
+                    {
+                        _endDate = value;
+                        OnPropertyChanged();
+                    }
+                }
+            }
+        }
+
+        public DateTime StartDate
+        {
+            get { return _startDate; }
+            set
+            {
+                if (value > EndDate)
+                {
+                    MessageBox.Show(Strings.IncorrectStartDate,
+                        Strings.InputError,
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    if (_caX509Certificate != null && !_caX509Certificate.IsValid(value))
+                    {
+                        MessageBox.Show(String.Format(Strings.CACertificateNotStarted, _caX509Certificate.NotBefore),
+                                        Strings.InputError,
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Exclamation);
+                    }
+                    else
+                    {
+                        _startDate = value;
+                        OnPropertyChanged();
+                    }
+                }
+
+            }
+        }
 
         public String CACertificatePath
         {
@@ -50,6 +112,12 @@ namespace VisualPKI.Views
                 if (_caX509Certificate != null)
                 {
                     _caCertificatePath = value;
+                    if (_caX509Certificate != null)
+                    {
+                        MainWindow.ShowWindow<DisplayCertificateInformations>();
+                        MainWindow.GetWindow<DisplayCertificateInformations>().CSRData =
+                            SigningRequestData.FromX509ertificate(_caX509Certificate);
+                    }
                 }
                 else
                 {
@@ -110,6 +178,8 @@ namespace VisualPKI.Views
 
         public IntermediateCertificateWindow()
         {
+            _startDate = DateTime.Now;
+            _endDate = _startDate.AddDays(1);
             SerialNumber = Settings.Default.LastGeneratedSerial;
             InitializeComponent();
         }
@@ -125,6 +195,7 @@ namespace VisualPKI.Views
 
 
             String baseName = SavePath.RegExpReplace(@"\.\w+$", "");
+
 
             Certificate.WriteCertificate(couple.Right(), SavePath);
             var finder = new PasswordFinder(true);

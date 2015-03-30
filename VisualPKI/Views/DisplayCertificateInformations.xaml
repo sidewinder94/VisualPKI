@@ -1,0 +1,46 @@
+﻿<Window x:Class="VisualPKI.Views.DisplayCertificateInformations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:validators="clr-namespace:VisualPKI.Resources.Validators"
+        Title="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.DisplayCertificateInformations}" 
+        Height="320" 
+        Width="500"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" Closed="Window_Closed">
+    <Grid DataContext="{Binding CSRData}" IsEnabled="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <!--Labels-->
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Locale.DomainName, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="{Binding Locale.Organization, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="{Binding Locale.OrganisationalUnit, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="{Binding Locale.Country, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="{Binding Locale.State, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="{Binding Locale.Town, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="{Binding Locale.MailAddress, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <Label Grid.Row="7" Grid.Column="0" Content="{Binding Locale.IssuerDN, Source={StaticResource LocalizedStrings}}" Style="{StaticResource LabelStyle}"/>
+        <!--Labels-->
+        <!--Controls-->
+        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding DistinguishedName, Mode=OneWay}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Organization, Mode=OneWay}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding OrganizationalUnit, Mode=OneWay}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding City, Mode=OneWay}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding State, Mode=OneWay}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Country, Mode=OneWay}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding MailAddress, Mode=OneWay}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBoxStyle}" Text="{Binding IssuerDN, Mode=OneWay}"/>
+        <!--Controls-->
+    </Grid>
+</Window>

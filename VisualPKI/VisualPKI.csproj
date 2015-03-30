@@ -89,6 +89,9 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Validators\EmailRule.cs" />
+    <Compile Include="Views\DisplayCertificateInformations.xaml.cs">
+      <DependentUpon>DisplayCertificateInformations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\IntermediateCertificateWindow.xaml.cs">
       <DependentUpon>IntermediateCertificateWindow.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
     <Compile Include="Views\SignCrWindow.xaml.cs">
       <DependentUpon>SignCrWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DisplayCertificateInformations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\IntermediateCertificateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -240,4 +240,19 @@ Leave blank to let the key unprotected</value>
   <data name="InvalidPkey" xml:space="preserve">
     <value>Invalid Private key</value>
   </data>
+  <data name="CACertificateExpired" xml:space="preserve">
+    <value>The CA certificate is only valid until {0}</value>
+  </data>
+  <data name="CACertificateNotStarted" xml:space="preserve">
+    <value>The CA certificate is valid from {0}</value>
+  </data>
+  <data name="DisplayCertificateInformations" xml:space="preserve">
+    <value>Display Certificate Informations</value>
+  </data>
+  <data name="IssuerDN" xml:space="preserve">
+    <value>Issuer Name</value>
+  </data>
+  <data name="DisplayLastCertificateInfo" xml:space="preserve">
+    <value>Display Last Certificate Informations</value>
+  </data>
 </root>

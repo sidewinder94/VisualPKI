@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -153,6 +154,7 @@ namespace VisualPKI.Generation
             }
         }
 
+
         public static X509Certificate ReadCertificate(String path)
         {
             X509Certificate result = null;
@@ -171,11 +173,5 @@ namespace VisualPKI.Generation
             }
             return result;
         }
-
-        public static bool ValidateCertificate(String path)
-        {
-            return true;
-        }
-
     }
 }
