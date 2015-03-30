@@ -144,6 +144,13 @@ namespace VisualPKI.Generation
             return new Tuple<AsymmetricCipherKeyPair, X509Certificate>(intermediateKeyPair, cert);
         }
 
+        public static X509Certificate SignCertificate(Tuple<DateTime, DateTime> timeSpan, X509Name subjectDN,
+            X509Certificate caCertificate, AsymmetricCipherKeyPair caKeyPair, String signatureAlgorithm)
+        {
+            return null;
+        }
+
+
         public static void WriteCertificate(X509Certificate cert, String path, String password = null)
         {
             //TODO: Export in PKCS formats

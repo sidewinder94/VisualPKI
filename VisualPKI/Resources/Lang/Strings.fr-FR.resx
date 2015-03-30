@@ -253,4 +253,16 @@ Laissez blanc pour ne pas définir de mot de passe</value>
   <data name="DisplayLastCertificateInfo" xml:space="preserve">
     <value>Afficher les informations du dernier certificat</value>
   </data>
+  <data name="CSR" xml:space="preserve">
+    <value>Demande de signature</value>
+  </data>
+  <data name="InvalidCSR" xml:space="preserve">
+    <value>Demande de signature de certificat invalide ou inexistante</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Emetteur</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Sujet</value>
+  </data>
 </root>

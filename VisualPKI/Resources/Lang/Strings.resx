@@ -255,4 +255,16 @@ Leave blank to let the key unprotected</value>
   <data name="DisplayLastCertificateInfo" xml:space="preserve">
     <value>Display Last Certificate Informations</value>
   </data>
+  <data name="CSR" xml:space="preserve">
+    <value>Signing Request</value>
+  </data>
+  <data name="InvalidCSR" xml:space="preserve">
+    <value>Certificate Signing Request invalid or inexistant</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Issuer</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
 </root>

@@ -116,7 +116,7 @@ namespace VisualPKI.Views
                     {
                         MainWindow.ShowWindow<DisplayCertificateInformations>();
                         MainWindow.GetWindow<DisplayCertificateInformations>().CSRData =
-                            SigningRequestData.FromX509ertificate(_caX509Certificate);
+                            SigningRequestData.FromX509Certificate(_caX509Certificate);
                     }
                 }
                 else
@@ -180,6 +180,7 @@ namespace VisualPKI.Views
         {
             _startDate = DateTime.Now;
             _endDate = _startDate.AddDays(1);
+            CSRData = new SigningRequestData();
             SerialNumber = Settings.Default.LastGeneratedSerial;
             InitializeComponent();
         }

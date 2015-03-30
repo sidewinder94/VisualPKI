@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.RightsManagement;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.X509;
 using Utils.Text;
 
@@ -20,28 +21,41 @@ namespace VisualPKI.DataStructures
         public String State { get; set; }
         public String Country { get; set; }
         public String MailAddress { get; set; }
-        public String IssuerDN { get; private set; }
+        public SigningRequestData Issuer { get; private set; }
 
-        public static SigningRequestData FromX509ertificate(X509Certificate cert)
+        public static SigningRequestData FromX509Certificate(X509Certificate cert)
         {
             var issuer = cert.IssuerDN;
             var subject = cert.SubjectDN;
 
 
+            var result = GetSubjectData(subject);
+            result.Issuer = GetSubjectData(issuer);
 
+            return result;
+        }
+
+        public static SigningRequestData FromCSR(Pkcs10CertificationRequest pkcs10CertificationRequest)
+        {
+
+            var subject = pkcs10CertificationRequest.GetCertificationRequestInfo().Subject;
+            var result = GetSubjectData(subject);
+
+            return result;
+        }
+
+        private static SigningRequestData GetSubjectData(X509Name subject)
+        {
             var result = new SigningRequestData()
             {
-                DistinguishedName = subject.GetValueList(X509Name.CN)[0].ToString().RegExpReplace(@"/emailAddress=.*$", ""),
-                Organization = subject.GetValueList(X509Name.O)[0].ToString(),
-                OrganizationalUnit = subject.GetValueList(X509Name.OU)[0].ToString(),
-                City = subject.GetValueList(X509Name.L)[0].ToString(),
-                State = subject.GetValueList(X509Name.ST)[0].ToString(),
-                Country = subject.GetValueList(X509Name.C)[0].ToString(),
-                MailAddress = subject.GetValueList(X509Name.CN)[0].ToString().RegExpReplace(@"^.*/emailAddress=", ""),
-                IssuerDN = cert.SubjectDN.ToString()
-
+                DistinguishedName = subject.GetValueList(X509Name.CN)[0].ToString().RegExpReplace(@"/emailAddress=.*$", "").ReEncodeString("iso-8859-1", "utf-8"),
+                Organization = subject.GetValueList(X509Name.O)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                OrganizationalUnit = subject.GetValueList(X509Name.OU)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                City = subject.GetValueList(X509Name.L)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                State = subject.GetValueList(X509Name.ST)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                Country = subject.GetValueList(X509Name.C)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                MailAddress = subject.GetValueList(X509Name.CN)[0].ToString().RegExpReplace(@"^.*/emailAddress=", "").ReEncodeString("iso-8859-1", "utf-8"),
             };
-
             return result;
         }
 

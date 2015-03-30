@@ -151,6 +151,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Signing Request.
+        /// </summary>
+        public static string CSR {
+            get {
+                return ResourceManager.GetString("CSR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Digest.
         /// </summary>
         public static string Digest {
@@ -250,6 +259,15 @@ namespace VisualPKI.Resources.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Certificate Signing Request invalid or inexistant.
+        /// </summary>
+        public static string InvalidCSR {
+            get {
+                return ResourceManager.GetString("InvalidCSR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The specified Email appears to be invalid.
         /// </summary>
         public static string InvalidMail {
@@ -264,6 +282,15 @@ namespace VisualPKI.Resources.Lang {
         public static string InvalidPkey {
             get {
                 return ResourceManager.GetString("InvalidPkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Issuer.
+        /// </summary>
+        public static string Issuer {
+            get {
+                return ResourceManager.GetString("Issuer", resourceCulture);
             }
         }
         
@@ -463,6 +490,15 @@ namespace VisualPKI.Resources.Lang {
         public static string State {
             get {
                 return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Subject.
+        /// </summary>
+        public static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
             }
         }
         

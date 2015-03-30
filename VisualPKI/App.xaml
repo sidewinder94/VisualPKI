@@ -5,9 +5,11 @@
              xmlns:u="clr-namespace:Utils.WPF;assembly=Utils"
              xmlns:converter="clr-namespace:VisualPKI.Resources.Converter"
              xmlns:generation="clr-namespace:VisualPKI.Generation"
-             StartupUri="Views/MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml"
+             ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
+        <converter:PathToVisibilityConverter x:Key="PathToVisibilityConverter"/>
         <generation:PrivateKey x:Key="PKGenerator"/>
         <generation:Certificate x:Key="SelfSignedCertificate"/>
          <locale:LocalizedStrings x:Key="LocalizedStrings"/>

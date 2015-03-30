@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VisualPKI.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
@@ -73,9 +76,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataStructures\SigningRequestData.cs" />
+    <Compile Include="Generation\CertificateSigningRequest.cs" />
     <Compile Include="Generation\PrivateKey.cs" />
     <Compile Include="Generation\Certificate.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Resources\Converter\PathToVisibilityConverter.cs" />
     <Compile Include="Resources\Converter\SignatureAlgorithmsToHashesList.cs" />
     <Compile Include="Resources\Lang\Algorithms.Designer.cs">
       <AutoGen>True</AutoGen>
