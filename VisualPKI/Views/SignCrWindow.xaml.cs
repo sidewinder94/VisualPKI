@@ -4,16 +4,18 @@ using System.ComponentModel;
 using System.IO;
 
 using System.Runtime.CompilerServices;
-
+using System.Security.Cryptography;
 using System.Windows;
-using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.X509;
+using Utils.Misc;
+using Utils.Text;
 using VisualPKI.Annotations;
 using VisualPKI.DataStructures;
 using VisualPKI.Generation;
+using VisualPKI.Properties;
 using VisualPKI.Resources.Lang;
 
 namespace VisualPKI.Views
@@ -221,7 +223,14 @@ namespace VisualPKI.Views
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var signatureAlgorithm = String.Format("{0}with{1}", HashAlgorithm, SignatureAlgorithm);
+            var couple = Certificate.SignCertificate(StartDate, EndDate, CSRData,
+                                                     signatureAlgorithm, _caX509Certificate,
+                                                     _caKeyPair, _csr.GetPublicKey());
+
+            Certificate.WriteCertificate(couple, SavePath);
+
+            Settings.Default.Save();
         }
 
         private void Window_Closed(object sender, EventArgs e)

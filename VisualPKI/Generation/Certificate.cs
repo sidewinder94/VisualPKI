@@ -120,10 +120,22 @@ namespace VisualPKI.Generation
                                                                                          X509Certificate caCertificate,
                                                                                          AsymmetricCipherKeyPair caKeyPair)
         {
-
-
-            var intermediateKeyPair = PrivateKey.GenerateKeyPair(PrivateKey.SKeyAlgorithms[keyParams.Left()],
+            var generatedKeyPair = PrivateKey.GenerateKeyPair(PrivateKey.SKeyAlgorithms[keyParams.Left()],
                 keyParams.Right());
+
+            return new Tuple<AsymmetricCipherKeyPair, X509Certificate>(generatedKeyPair,
+                SignCertificate(startDate, endDate, csrData, signatureAlgorithm,
+                                caCertificate, caKeyPair, generatedKeyPair.Public));
+        }
+
+        public static X509Certificate SignCertificate(DateTime startDate, DateTime endDate, SigningRequestData csrData,
+            string signatureAlgorithm, X509Certificate caCertificate, AsymmetricCipherKeyPair caKeyPair,
+            AsymmetricKeyParameter clientKey)
+        {
+            if (clientKey.IsPrivate)
+            {
+                throw new ArgumentException("Should be a public key");
+            }
 
             var certGen = new X509V3CertificateGenerator();
             Settings.Default.LastGeneratedSerial += 1;
@@ -132,24 +144,17 @@ namespace VisualPKI.Generation
             certGen.SetNotBefore(startDate);
             certGen.SetNotAfter(endDate);
             certGen.SetSubjectDN(csrData.GetX509Name());
-            certGen.SetPublicKey(intermediateKeyPair.Public);
+            certGen.SetPublicKey(clientKey);
             certGen.SetSignatureAlgorithm(signatureAlgorithm);
             certGen.AddExtension(X509Extensions.AuthorityKeyIdentifier, false,
-                        new AuthorityKeyIdentifierStructure(caCertificate));
+                new AuthorityKeyIdentifierStructure(caCertificate));
             certGen.AddExtension(X509Extensions.SubjectKeyIdentifier, false,
-                        new SubjectKeyIdentifierStructure(intermediateKeyPair.Public));
+                new SubjectKeyIdentifierStructure(clientKey));
 
             X509Certificate cert = certGen.Generate(caKeyPair.Private, new SecureRandom(new CryptoApiRandomGenerator()));
 
-            return new Tuple<AsymmetricCipherKeyPair, X509Certificate>(intermediateKeyPair, cert);
+            return cert;
         }
-
-        public static X509Certificate SignCertificate(Tuple<DateTime, DateTime> timeSpan, X509Name subjectDN,
-            X509Certificate caCertificate, AsymmetricCipherKeyPair caKeyPair, String signatureAlgorithm)
-        {
-            return null;
-        }
-
 
         public static void WriteCertificate(X509Certificate cert, String path, String password = null)
         {

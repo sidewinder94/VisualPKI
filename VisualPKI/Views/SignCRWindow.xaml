@@ -107,7 +107,7 @@
                 <!--Labels-->
                 <!--Controls-->
                 <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="False"/>
-                <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2" IsEnabled="{Binding FilePath, ElementName=CSRPicker, Converter={StaticResource PathToVisibilityConverter}, Mode=OneWay}" />
+                <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
                 <u:FilePicker Grid.Row="2" Grid.Column="1"  ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" FilePath="{Binding SavePath, Mode=TwoWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SignCrWindow}}}" Style="{StaticResource FilePickerStyle}" Title="{Binding Path=Locale.Save, Source={StaticResource LocalizedStrings}}" Type="Save"/>
                 <!--Controls-->
             </Grid>

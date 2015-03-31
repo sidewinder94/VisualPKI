@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Windows;
 using Utils.WPF;
+using VisualPKI.Properties;
 
 namespace VisualPKI.Views
 {
@@ -58,6 +58,11 @@ namespace VisualPKI.Views
         public static T GetWindow<T>() where T : Window
         {
             return (T)InstantiatedWindows[typeof(T)];
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Settings.Default.Save();
         }
     }
 }
