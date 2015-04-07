@@ -42,7 +42,7 @@
         <DatePicker Grid.Column="1" Grid.Row="0" SelectedDate="{Binding StartDate}" Style="{StaticResource DateStyle}"/>
         <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate}" Style="{StaticResource DateStyle}"/>
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SerialNumber}" Style="{StaticResource TextBoxStyle}" TextAlignment="Right" IsEnabled="False"/>
-        <u:FilePicker Grid.Row="3" Grid.Column="1" FilePath="{Binding PrivateKeyPath, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" Title="{Binding Path=Locale.Open,Source={StaticResource LocalizedStrings}}" Style="{StaticResource FilePickerStyle}"/>
+        <u:FilePicker x:Name="PKeyFilePicker" Grid.Row="3" Grid.Column="1" FilePath="{Binding PrivateKeyPath, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" Title="{Binding Path=Locale.Open,Source={StaticResource LocalizedStrings}}" Style="{StaticResource FilePickerStyle}"/>
         <GroupBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Header="{Binding Locale.Optionnal, Source={StaticResource LocalizedStrings}}" Style="{StaticResource GroupStyle}">
             <Grid DataContext="{Binding CSRData}">
                 <Grid.ColumnDefinitions>
@@ -110,7 +110,7 @@
                 <!--Labels-->
                 <!--Controls-->
                 <ComboBox  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding KeyAlgorithms, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedValue="{Binding KeyAlgorithm}" Style="{StaticResource ComboboxStyle}" SelectedIndex="7" IsEnabled="False"/>
-                <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding KeyStrengths, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedItem="{Binding KeyStrength}" Style="{StaticResource ComboboxStyle}" SelectedIndex="4"/>
+                <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding KeyStrengths, Mode=OneTime, Source={StaticResource PKGenerator}}" SelectedItem="{Binding KeyStrength}" Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="{Binding FilePath, Converter={StaticResource PathToVisibilityConverter}, ElementName=PKeyFilePicker, Mode=OneWay}"/>
                 <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithms, Mode=OneTime, Source={StaticResource SelfSignedCertificate}}" SelectedItem="{Binding SignatureAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="4" IsEnabled="False"/>
                 <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SignatureAlgorithm, Converter={StaticResource SignatureAlgorithmsToHashesList}}" SelectedItem="{Binding HashAlgorithm}"  Style="{StaticResource ComboboxStyle}" SelectedIndex="2"/>
                 <u:FilePicker Grid.Row="4" Grid.Column="1"  ButtonContent="{Binding Locale.Browse, Source={StaticResource LocalizedStrings}}" FilePath="{Binding SavePath, Mode=TwoWay,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SelfSignedCertificateWindow}}}" Style="{StaticResource FilePickerStyle}" Title="{Binding Path=Locale.Save, Source={StaticResource LocalizedStrings}}" Type="Save"/>

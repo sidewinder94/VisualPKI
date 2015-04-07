@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace VisualPKI.Resources.Converter
 {
-    class PathToVisibilityConverter : IValueConverter
+    class PathToBooleanConverter : IValueConverter
     {
         #region Implementation of IValueConverter
 

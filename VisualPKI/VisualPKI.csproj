@@ -80,7 +80,7 @@
     <Compile Include="Generation\PrivateKey.cs" />
     <Compile Include="Generation\Certificate.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Resources\Converter\PathToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converter\PathToBooleanConverter.cs" />
     <Compile Include="Resources\Converter\SignatureAlgorithmsToHashesList.cs" />
     <Compile Include="Resources\Lang\Algorithms.Designer.cs">
       <AutoGen>True</AutoGen>

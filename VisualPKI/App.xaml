@@ -9,7 +9,7 @@
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <converter:SignatureAlgorithmsToHashesList x:Key="SignatureAlgorithmsToHashesList"/>
-        <converter:PathToVisibilityConverter x:Key="PathToVisibilityConverter"/>
+        <converter:PathToBooleanConverter x:Key="PathToVisibilityConverter"/>
         <generation:PrivateKey x:Key="PKGenerator"/>
         <generation:Certificate x:Key="SelfSignedCertificate"/>
          <locale:LocalizedStrings x:Key="LocalizedStrings"/>

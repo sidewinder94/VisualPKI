@@ -5,7 +5,7 @@
         xmlns:validators="clr-namespace:VisualPKI.Resources.Validators"
         xmlns:local="clr-namespace:VisualPKI.Views"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="SignCRWindow"         
+        Title="{Binding Source={StaticResource LocalizedStrings}, Path=Locale.SignCertificateRequest}"         
         MinHeight="640"
         Height="640" 
         Width="500"  Closed="Window_Closed">
