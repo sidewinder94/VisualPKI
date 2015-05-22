@@ -41,7 +41,7 @@ namespace VisualPKI.Views
 
         private void Window_Closed(object sender, System.EventArgs e)
         {
-            MainWindow.InstantiatedWindows.Remove(GetType());
+            MainWindow.WindowClosed(GetType());
         }
     }
 }

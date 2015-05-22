@@ -211,7 +211,7 @@ namespace VisualPKI.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            MainWindow.InstantiatedWindows.Remove(GetType());
+            MainWindow.WindowClosed(GetType());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

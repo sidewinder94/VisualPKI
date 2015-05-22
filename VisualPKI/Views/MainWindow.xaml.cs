@@ -11,7 +11,7 @@ namespace VisualPKI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly Dictionary<Type, Window> InstantiatedWindows = new Dictionary<Type, Window>();
+        private static readonly Dictionary<Type, Window> InstantiatedWindows = new Dictionary<Type, Window>();
         public MainWindow()
         {
             InitializeComponent();
@@ -58,6 +58,11 @@ namespace VisualPKI.Views
         public static T GetWindow<T>() where T : Window
         {
             return (T)InstantiatedWindows[typeof(T)];
+        }
+
+        public static void WindowClosed(Type t)
+        {
+            InstantiatedWindows.Remove(t);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
