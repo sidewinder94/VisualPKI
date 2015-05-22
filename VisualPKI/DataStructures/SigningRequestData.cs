@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.RightsManagement;
+using System.Text.RegularExpressions;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Pkcs;
@@ -53,9 +54,12 @@ namespace VisualPKI.DataStructures
                 OrganizationalUnit = subject.GetValueList(X509Name.OU)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
                 City = subject.GetValueList(X509Name.L)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
                 State = subject.GetValueList(X509Name.ST)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
-                Country = subject.GetValueList(X509Name.C)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
-                MailAddress = subject.GetValueList(X509Name.CN)[0].ToString().RegExpReplace(@"^.*/emailAddress=", "").ReEncodeString("iso-8859-1", "utf-8"),
+                Country = subject.GetValueList(X509Name.C)[0].ToString().ReEncodeString("iso-8859-1", "utf-8")
             };
+
+            result.MailAddress =
+                Regex.Match(subject.GetValueList(X509Name.CN)[0].ToString().ReEncodeString("iso-8859-1", "utf-8"),
+                    @"^.*/emailAddress=(.*)").Groups[1].Value;
             return result;
         }
 
@@ -85,7 +89,7 @@ namespace VisualPKI.DataStructures
             }
             if (DistinguishedName == null && MailAddress == null) return new X509Name(dict.Keys.ToList(), dict);
 
-            if (DistinguishedName != null && MailAddress != null)
+            if (DistinguishedName != null && !MailAddress.IsEmpty())
             {
                 dict.Add(X509Name.CN, String.Format("{0}/emailAddress={1}", DistinguishedName, MailAddress));
             }
